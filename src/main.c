@@ -18,16 +18,7 @@ int main() {
 
   printf("%s %s %s\n", val, val2, val3);
 
-  for (size_t i = 0; i < table->capacity; i++) {
-    kv_entry_t *entry = &table->entries[i];
-
-    if (entry->key != NULL) {
-        free(entry->key);
-        free(entry->value);
-    }
-  }
-
-  free(table->entries);
-  free(table);
-  return 0;
+  kv_del(table, "hehe");
+  val = NULL;
+  printf("%s %s %s\n", val, val2, val3);
 }
