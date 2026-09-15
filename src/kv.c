@@ -25,7 +25,7 @@ int kv_del(kv_t *db, char *key) {
     kv_entry_t *entry = &db->entries[real_idx];
 
     if(entry->key == NULL) {
-      return -2;
+      return -1;
     }
 
     if (entry->key && entry->key != (void *)TOMBSTONE && !strcmp(entry->key, key)) {
