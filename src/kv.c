@@ -15,7 +15,7 @@ size_t hash(char *val, int capacity) {
   return hash % capacity;
 }
 
-int kv_del(kv_t *db, char *key) {
+int kv_delete(kv_t *db, char *key) {
   if (!db || !key) return -1;
 
   size_t idx = hash(key, db->capacity);

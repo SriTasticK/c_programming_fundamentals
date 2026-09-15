@@ -18,7 +18,7 @@ int main() {
 
   printf("%s %s %s\n", val, val2, val3);
 
-  kv_del(table, "hehe");
+  kv_delete(table, "hehe");
   val = NULL;
   printf("%s %s %s\n", val, val2, val3);
 }
