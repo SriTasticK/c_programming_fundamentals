@@ -2,7 +2,13 @@
 #include <kv.h>
 
 int main() {
-  kv_t *table = kv_init(7);
+  kv_t *table = kv_init(65535);
   printf("%p\n", table);
-  printf("%ld", table->capacity);
+  printf("%ld\n", table->capacity);
+  kv_put(table, "hehe", "haha");
+  for (int i = 0; i < table->capacity; i++) {
+    if (table->entries[i].key){
+      printf("[%d] %s: %s\n",i, table->entries[i].key, table->entries[i].value);
+    }
+  }
 }
