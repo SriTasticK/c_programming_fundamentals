@@ -37,6 +37,7 @@ int kv_del(kv_t *db, char *key) {
        return 0;
     }
   }
+  return -1;
 }
 char *kv_get(kv_t *db, char *key) {
   if(!db || !key) return NULL;
@@ -46,8 +47,12 @@ char *kv_get(kv_t *db, char *key) {
     size_t real_idx = (idx + i) % db->capacity;
     kv_entry_t *entry = &db->entries[real_idx];
 
-    if (entry->key == NULL || entry->key == (void *)TOMBSTONE) {
+    if (entry->key == NULL) {
       return NULL;
+    }
+
+    if (entry->key == (void *)TOMBSTONE) {
+      continue;
     }
 
     if (entry->key && entry->key != (void *)TOMBSTONE && !strcmp(entry->key, key)) {
